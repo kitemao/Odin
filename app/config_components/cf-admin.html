@@ -1,0 +1,95 @@
+<polymer-element name="cf-admin" hidden>
+<script>
+(function () {
+
+    var adminList = [
+        {
+            name: 'video',
+            nav: [
+                {
+                    title: 'video', icon: 'settings',
+                    subnav: [
+                        { title: '首页',   path  : '1'},
+                        { title: '搜索页', path  : '2'},
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'},
+                        { title: '搜索页', path  : '2' },
+                        { title: '搜索页', path  : '3'}
+                    ]
+                }
+            ],
+            whitelist: [
+              'miaojian'
+            ]
+        },
+        {
+            name: 'muce3',
+            nav: [
+                {
+                    title: 'muce', icon: 'settings',
+                    subnav: [
+                        { title: 'muce1', path  : '1' },
+                        { title: 'muce2', path  : '2' },
+                        { title: 'muce3', path  : '3'}
+                    ]
+                }
+            ],
+            whitelist: [
+              'miaojian'
+            ]
+        }
+    ];
+
+
+    Polymer('cf-admin', {
+
+        getAdminNames: function () {
+
+            return adminList.map(function (item) {
+                return item.name;
+            });
+        },
+
+        getNavsByName: function (name) {
+            for (var i = 0; i < adminList.length; i++) {
+                if (adminList[i].name === name) {
+                    return adminList[i].nav
+                }
+            }
+        },
+
+        getListByUsername: function (username) {
+            return adminList.filter(function (item) {
+                return item.whitelist.indexOf(username) !== -1;
+            });
+        }
+    });
+})();
+
+</script>
+</polymer-element>

@@ -1,0 +1,29 @@
+<!-- 整个页头 -->
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="ly-iframe" attributes="url route">
+<template>
+    <link rel="stylesheet" href="ly-iframe.css">
+    <iframe id="iframe"></iframe>
+</template>
+<script>
+
+    /*
+    *
+    * @author miaojian
+    */
+    Polymer('ly-iframe', {
+
+        url: './admin/index.html',
+
+        routeChanged: function () {
+            console.log('iframe:' + this.route);
+
+            var $iframe = this.$.iframe;
+
+            this.$.iframe.src = this.url + '#' + this.route;
+        }
+    });
+
+</script>
+</polymer-element>

@@ -1,0 +1,42 @@
+:host {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+}
+
+.logo {
+    display: inline-block;
+    max-width: 400px;
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+paper-dropdown {
+    color: #fff;
+    background: transparent;
+    padding: 0;
+}
+
+paper-dropdown::shadow #control {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+paper-dropdown::shadow #control > div {
+    padding: 0;
+}
+
+paper-dropdown::shadow #control core-icon {
+    padding-top: 13px;
+}
+
+paper-menu-button {
+    padding: 0 8px;
+}
+
+paper-menu-button::shadow #menu {
+    background-color: #fff;
+}

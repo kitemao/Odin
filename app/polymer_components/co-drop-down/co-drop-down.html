@@ -1,0 +1,30 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-item/core-item.html">
+<link rel="import" href="../../components/core-popup-menu/core-popup-menu.html">
+
+<polymer-element name="co-drop-down" attributes="label opened selected selectedItem halign valign">
+<template>
+
+  <link rel="stylesheet" href="co-drop-down.css">
+
+  <core-item id="item" label="{{selectedItem ? selectedItem.label : label}}" on-tap="{{tapAction}}">
+    <div flex></div>
+    <core-icon icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
+  </core-item>
+
+  <core-popup-menu id="menu" relatedTarget="{{$.item}}" opened="{{opened}}" selected="{{selected}}" selectedItem="{{selectedItem}}" halign="{{halign}}" valign="{{valign}}">
+    <core-item label="Churro"></core-item>
+    <content></content>
+  </core-popup-menu>
+
+</template>
+<script>
+
+  Polymer('co-drop-down', {
+    tapAction: function() {
+      this.$.menu.opened = true;
+    }
+  });
+
+</script>
+</polymer-element>

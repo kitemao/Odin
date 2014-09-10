@@ -1,0 +1,5 @@
+core-scaffold::shadow core-toolbar,
+core-toolbar {
+    background-image: linear-gradient(#04519b, #044687 60%, #033769);
+    color: white;
+}

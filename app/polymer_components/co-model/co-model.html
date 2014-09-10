@@ -1,0 +1,18 @@
+<link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="../../components/core-ajax/core-ajax.html">
+
+<polymer-element name="co-model" attributes="filter items storageId">
+    <script>
+        Polymer('co-model', {
+            data: {},
+
+            set: function (key, value) {
+                this.data[key] = value;
+            },
+
+            get: function (key) {
+                return this.data[key]
+            }
+     });
+    </script>
+</polymer-element>

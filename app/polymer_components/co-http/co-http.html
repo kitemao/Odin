@@ -1,0 +1,45 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-ajax/core-ajax.html">
+
+<polymer-element name="co-http">
+<template>
+  <core-ajax id="ajax"
+    auto
+    url="{{url}}"
+    on-core-response="{{postsLoaded}}",
+    on-core-error="{{errorHandler}}"
+    handleAs="json">
+  </core-ajax>
+</template>
+<script>
+
+  /*
+   * @author miaojian
+   */
+  Polymer('co-http', {
+    publish: {
+
+      url: {value: '', reflect: false}
+    },
+
+    type: {
+
+    },
+
+    postsLoaded: function (data) {
+        var req = data.detail.response;
+        this.filterResponse(req);
+    },
+
+    filterResponse: function (data) {
+        console.log(data);
+        this.fire('success', data);
+    },
+
+    errorHandler: function () {
+        console.log(this.url, 'error');
+    }
+  });
+
+</script>
+</polymer-element>
