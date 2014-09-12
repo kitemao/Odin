@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Odin</title>
+
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <!-- endbuild -->
+  </head>
+  <body style="overflow-x: hidden;">
+    <div ng-view></div>
+
+    <!-- build:js /scripts/base.js -->
+    <script src="/components/underscore/underscore.js"></script>
+    <script src="/components/jquery/jquery.js"></script>
+    <script src="/components/datetimepicker/jquery.datetimepicker.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-animate/angular-animate.js"></script>
+    <script src="/components/angular-resource/angular-resource.js"></script>
+    <script src="/components/angular-route/angular-route.js"></script>
+    <script src="/components/angular-sanitize/angular-sanitize.js"></script>
+    <!-- endbuild -->
+    <script data-main="/admin/app" src="/components/requirejs/require.js"></script>
+</body>
+</html>
