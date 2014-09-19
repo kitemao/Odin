@@ -20,13 +20,13 @@
 <template>
     <link rel="stylesheet" href="ly-main.css">
 
-    <flatiron-director route="{{route}}"></flatiron-director>
+    <flatiron-director route="{{route}}" on-director-route="{{routeChangeAction}}" autoHash="true"></flatiron-director>
     <core-scaffold fullbleed>
       <core-header-panel navigation flex>
         <core-toolbar id="navheader">
           <span>Odin</span>
         </core-toolbar>
-        <core-menu selected="0" on-core-select="{{selectAdmin}}">
+        <core-menu selected="{{selected}}" on-core-select="{{selectAdmin}}">
             <template repeat="{{nav}}">
                 <core-submenu icon="{{icon}}" label="{{title}}">
                     <template repeat="{{subnav}}">
@@ -55,26 +55,24 @@
 
     changeAdmin: function (e, adminName) {
         this.nav = this.adminCfg.getNavsByName(adminName);
+        this.selected = 0;
     },
 
     selectAdmin: function (e, detail) {
         var selectedItem;
         var path;
-        var nav;
 
         if (detail.isSelected) {
             selectedItem = detail.item;
-            nav   = selectedItem.parentNode.label;
             path  = selectedItem.getAttribute('path');
 
-            if (nav && path) {
-                this.route = nav + '/' + path;
+            if (path) {
+                this.route = path;
             }
         }
     },
-
-    routeChanged: function () {
-        location.hash = '#' + this.route;
+    routeChangeAction: function (event) {
+        var detail = event.detail;
     }
   });
 

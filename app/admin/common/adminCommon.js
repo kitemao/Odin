@@ -6,6 +6,7 @@
 
 define([
     'common/adminRoute',
-], function (adminRoute) {
-    angular.module('adminCommon', [ 'adminRoute' ]);
+    'common/adminHttp',
+], function () {
+    angular.module('adminCommon', [ 'adminRoute', 'adminHttp']);
 });

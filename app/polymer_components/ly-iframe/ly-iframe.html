@@ -14,14 +14,13 @@
     */
     Polymer('ly-iframe', {
 
-        url: './admin/index.html',
+        url: './admin/business',
 
         routeChanged: function () {
-            console.log('iframe:' + this.route);
+            var src = this.url + this.route + '/index.html';
+            this.$.iframe.src = src;
 
-            var $iframe = this.$.iframe;
-
-            this.$.iframe.src = this.url + '#' + this.route;
+            console.log('iframe src:', src);
         }
     });
 

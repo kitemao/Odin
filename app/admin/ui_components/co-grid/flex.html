@@ -1,0 +1,11 @@
+<ul class="table table-bordered table-striped table-hover">
+    <li ng-if="fields" class="text-{{item.align}} tr" layout horizontal>
+        <div ng-repeat="item in fields" class="td" flex>{{item.title}}</div>
+    </li>
+    <li ng-repeat="item in gridData" layout horizontal class="tr">
+        <div class="td">{{item.id}}</div>
+        <div flex class="td">{{item.name}}</div>
+        <div flex class="td dropdown related_menu pull-right"><a title="关联数据" class="relate_menu dropdown-toggle" data-toggle="dropdown"><i class="icon icon-list"></i></a><ul class="dropdown-menu" role="menu"><li class="with_menu_btn"><a href="/auth/group/?_rel_permissions__id__exact=57" title="组"><i class="icon icon-th-list"></i> 组</a><a class="add_link dropdown-menu-btn" href="/auth/group/add/?_rel_permissions__id__exact=57"><i class="icon icon-plus pull-right"></i></a></li><li class="with_menu_btn"><a href="/auth/user/?_rel_user_permissions__id__exact=57" title="用户"><i class="icon icon-th-list"></i> 用户</a><a class="add_link dropdown-menu-btn" href="/auth/user/add/?_rel_user_permissions__id__exact=57"><i class="icon icon-plus pull-right"></i></a></li></ul></div>
+    </li>
+</ul>
+

@@ -1,0 +1,23 @@
+
+<div class="navbar content-navbar navbar-default navbar-xs" data-toggle="breakpoint"
+      data-class-xs="navbar content-navbar navbar-inverse navbar-xs"
+      data-class-sm="navbar content-navbar navbar-default navbar-xs">
+    <div class="navbar-header">
+        <a class="navbar-brand" data-toggle="collapse" data-target="#top-nav .navbar-collapse">
+            {{title}}
+        </a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        </ul>
+        <co-search keyword="keyword" ng-if="search"></co-search>
+        <div class="navbar-btn navbar-right hide-xs" ng-if="addBtnText">
+          <a href="/host/host/add/" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            {{addBtnText}}
+          </a>
+        </div>
+    </div>
+</div>
+<co-grid fields="grid.gridFields" grid-data="gridData" actions="grid.actions"></co-grid>
+<pagination items-per-page="itemsPerPage" rotate="false" total-items="totalItems" max-size="maxSize" page="page" class="dataTables_paginate"></pagination>

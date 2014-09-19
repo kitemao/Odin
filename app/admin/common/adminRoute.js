@@ -6,11 +6,26 @@ define([], function () {
             function($routeProvider, $locationProvider) {
                 //$locationProvider.html5Mode(true);
 
+                function attachController(route) {
+                    var controllerCfg = route.controllerCfg;
+
+                    if (_.isObject(controllerCfg)) {
+
+                        route.controller = [ '$scope', function ($scope) {
+                            _.extend($scope, controllerCfg);
+                        }];
+                    }
+                    return route;
+                }
+
                 var navigation = {};
 
                 this.assignRoutes = function(routes) {
                     _.forEach(routes, function(route, path) {
+
                         $routeProvider.when(path, route);
+                        //$routeProvider.when(path, attachController(route));
+
                         navigation[route.name] = path;
                     });
                 };

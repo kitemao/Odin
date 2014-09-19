@@ -5,9 +5,15 @@
  */
 
 define([
-    'ui_components/ly-crumb/ly-crumb'
+    'ui_components/co-search/co-search',
+    'ui_components/co-grid/co-grid',
+    'ui_components/bn-crumb/bn-crumb',
+    'ui_components/bn-list/bn-list',
 ], function () {
     angular.module('adminUi', [
-        'ly.crumb'
+        'bn.crumb',
+        'bn.list',
+        'co.search',
+        'co.grid'
     ]);
 });

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Odin</title>
+
+    <link href="/components/bootstrap/css/bootstrap.css" type="text/css" media="screen" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" id="site-theme" href="http://bootswatch.com/cerulean/bootstrap.min.css" />
+
+    <link href="/components/font-awesome/css/font-awesome.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/components/bootstrap-select/dist/css/bootstrap-select.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/xadmin/css/xadmin.main.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/xadmin/css/xadmin.plugins.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/xadmin/css/xadmin.responsive.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/xadmin/css/xadmin.page.dashboard.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/select2/select2.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/selectize/selectize.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/selectize/selectize.bootstrap3.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/bootstrap-datepicker/css/datepicker.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" type="text/css" media="screen" rel="stylesheet" />
+    <link href="/vendor/xadmin/css/xadmin.form.css" type="text/css" media="screen" rel="stylesheet" />
+
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <!-- endbuild -->
+  </head>
+  <body style="overflow-x: hidden;">
+    <div ng-view class="view"></div>
+
+    <!-- build:js /scripts/base.js -->
+    <script src="/components/underscore/underscore.js"></script>
+    <script src="/components/jquery/jquery.js"></script>
+    <script src="/components/datetimepicker/jquery.datetimepicker.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-animate/angular-animate.js"></script>
+    <script src="/components/angular-resource/angular-resource.js"></script>
+    <script src="/components/angular-route/angular-route.js"></script>
+    <script src="/components/angular-sanitize/angular-sanitize.js"></script>
+    <!-- endbuild -->
+    <script data-main="/admin/app" src="/components/requirejs/require.js"></script>
+</body>
+</html>

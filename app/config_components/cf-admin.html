@@ -4,42 +4,18 @@
 
     var adminList = [
         {
-            name: 'video',
+            name: 'main',
             nav: [
                 {
-                    title: 'video', icon: 'settings',
+                    title: '配置后台', icon: 'settings',
                     subnav: [
-                        { title: '首页',   path  : '1'},
-                        { title: '搜索页', path  : '2'},
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'},
-                        { title: '搜索页', path  : '2' },
-                        { title: '搜索页', path  : '3'}
+                        { title: '首页',   path  : 'main/home' },
+                    ],
+                    stylesheets: [
+                        'main.css'
+                    ],
+                    scripts: [
+                        'cust.css'
                     ]
                 }
             ],
@@ -69,7 +45,6 @@
     Polymer('cf-admin', {
 
         getAdminNames: function () {
-
             return adminList.map(function (item) {
                 return item.name;
             });

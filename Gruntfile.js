@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     // configurable paths
     var pathConfig = {
         app: 'app',
+        admin: 'admin',
         dist: 'dist',
         tmp: '.tmp',
         test: 'test',
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
         paths: pathConfig,
         watch: {
             compass: {
-                files: ['<%= paths.app %>/compass/**/*'],
+                files: ['<%= paths.app %>/admin/compass/**/*'],
                 tasks: ['compass:server']
             },
             test: {
@@ -184,9 +185,9 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
-                sassDir: '<%= paths.app %>/compass/sass',
-                imagesDir: '<%= paths.app %>/compass/images',
-                fontsDir: '<%= paths.app %>/images/fonts',
+                sassDir: '<%= paths.app %>/admin/compass/sass',
+                imagesDir: '<%= paths.app %>/admin/compass/images',
+                fontsDir: '<%= paths.app %>/admin/images/fonts',
                 relativeAssets: true
             },
             dist: {

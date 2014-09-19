@@ -1,0 +1,45 @@
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="action-checkbox-column">
+                <input type="checkbox" id="action-toggle">
+            </th>
+            <th ng-repeat="item in fields">
+                {{item.title}}
+            </th>
+            <th ng-if="actions">
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="grid-item" ng-repeat="item in gridData">
+            <td class="action-checkbox">
+                <input class="action-select" name="_selected_action" type="checkbox" value="57">
+            </td>
+            <td class="action-checkbox" ng-repeat="cell in fields">
+                {{item[cell.field]}}
+            </td>
+            <td ng-if="actions">
+                <div class="dropdown related_menu pull-right">
+                    <a title="操作" class="relate_menu dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-list"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="with_menu_btn" ng-repeat="action in actions">
+                            <a ng-click="deleteAction(action)" title="删除" ng-if="action.type === 'delete'">
+                                <i class="fa fa-remove"></i> {{action.title}}
+                            </a>
+                            <a ng-click="editAction(action)" title="编辑" ng-if="action.type === 'edit'">
+                                <i class="fa fa-edit"></i> {{action.title}}
+                            </a>
+                            <a ng-href="{{action.url}}" title="link" target="_blank" ng-if="action.type === 'link'">
+                                <i class="fa fa-external-link"></i> {{action.title}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

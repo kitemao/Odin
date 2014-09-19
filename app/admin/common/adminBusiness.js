@@ -5,7 +5,7 @@
  */
 
 define([
-    'business/main/bsMain',
+    'business/main/bsMain'
 ], function (bsMain) {
-    angular.module('adminBusiness', [ 'bsMain' ]);
+    angular.module('adminBusiness', ['bsMain']);
 });
