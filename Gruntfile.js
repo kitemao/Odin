@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         // 测试数据，没有ext的暂定为服务器请求
         if (require('path').extname(req.url) === '') {
 
-            var filePath = __dirname + '/' + pathConfig.mock + req.url + '/' + req.method;
+            var filePath = __dirname + '/' + pathConfig.mock + req.url.split('?')[0] + '/' + req.method;
             //var fileStr = require('fs').readFileSync( filePath , 'utf-8');
 
             // 删除数据缓存,以免修改后不更新

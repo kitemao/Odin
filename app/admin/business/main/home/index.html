@@ -20,7 +20,7 @@
   </head>
   <body ng-controller="home">
     <bn-crumb title="配置" sub-title="首页"></bn-crumb>
-    <bn-list title="首页" add-btn-text="增加后台" search="true" resource-url="/api/miao" resource-index="id" grid="grid" itemsPerPage="10" maxSize="5"></bn-list>
+    <bn-list title="首页" add-btn-text="增加后台" search="true" resource-url="/api/miao/:field" resource-index="id" grid="grid" items-per-page="10" max-size="5"></bn-list>
 
     <!-- build:js /scripts/base.js -->
     <script src="/components/underscore/underscore.js"></script>

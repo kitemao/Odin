@@ -18,14 +18,56 @@ require([
                         {
                             title: 'ID',
                             align: 'center',
-                            sortable: false,
-                            field: 'id'
+                            sortable: true,
+                            field: 'id',
+                            editable: false
                         },
                         {
                             title: 'Name',
                             align: 'center',
+                            sortable: true,
+                            field: 'name',
+                            editable: true,
+                            editType: 'text',
+                            hint: '请输入名字',
+                            dataType: 'string',
+                            valid: {
+                                required: { errorMsg: '请输入名字' }
+                            }
+                        },
+                        {
+                            title: '性别',
+                            align: 'center',
+                            sortable: true,
+                            field: 'gender',
+                            editable: true,
+                            editType: 'select',
+                            selectOptions: [
+                                {
+                                    value: 0, text: '男'
+                                },
+                                {
+                                    value: 1, text: '女'
+                                }
+                            ],
+                            hint: '请输入性别',
+                            dataType: 'number',
+                            valid: {
+                                required: { errorMsg: '请输入性别' }
+                            },
+                            content: function (item) {
+                                return item.gender === 0 ? '男' : '女';
+                            }
+                        },
+                        {
+                            title: '描述',
+                            align: 'center',
                             sortable: false,
-                            field: 'name'
+                            field: 'description',
+                            editable: true,
+                            editType: 'textarea',
+                            hint: '自我简介',
+                            dataType: 'string'
                         }
                     ],
                     actions: [

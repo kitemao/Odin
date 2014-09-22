@@ -1,11 +1,16 @@
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
-            <th class="action-checkbox-column">
+            <th class="action-checkbox-column" ng-if="multiChoose">
                 <input type="checkbox" id="action-toggle">
             </th>
-            <th ng-repeat="item in fields">
-                {{item.title}}
+            <th ng-repeat="item in fields" class="sortable sorted descending">
+                <co-sort ng-if="item.sortable" sort="sortObj.sort" sort-by="sortObj.sortBy" sort-by-field="item.field">
+                    {{item.title}}
+                </co-sort>
+                <span ng-if="!item.sortable">
+                    {{item.title}}
+                </span>
             </th>
             <th ng-if="actions">
                 &nbsp;
@@ -14,11 +19,11 @@
     </thead>
     <tbody>
         <tr class="grid-item" ng-repeat="item in gridData">
-            <td class="action-checkbox">
+            <td class="action-checkbox" ng-if="multiChoose">
                 <input class="action-select" name="_selected_action" type="checkbox" value="57">
             </td>
             <td class="action-checkbox" ng-repeat="cell in fields">
-                {{item[cell.field]}}
+                {{ cell.content ? cell.content(item, cell) : item[cell.field]}}
             </td>
             <td ng-if="actions">
                 <div class="dropdown related_menu pull-right">
@@ -27,10 +32,10 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="with_menu_btn" ng-repeat="action in actions">
-                            <a ng-click="deleteAction(action)" title="删除" ng-if="action.type === 'delete'">
+                            <a ng-click="deleteAction(item, action)" title="删除" ng-if="action.type === 'delete'">
                                 <i class="fa fa-remove"></i> {{action.title}}
                             </a>
-                            <a ng-click="editAction(action)" title="编辑" ng-if="action.type === 'edit'">
+                            <a ng-click="editAction(item, action)" title="编辑" ng-if="action.type === 'edit'">
                                 <i class="fa fa-edit"></i> {{action.title}}
                             </a>
                             <a ng-href="{{action.url}}" title="link" target="_blank" ng-if="action.type === 'link'">

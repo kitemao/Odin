@@ -15,7 +15,38 @@ define([], function (tpl) {
             return {
                 restrict: 'E',
                 scope: {
-                    gridData: '='
+                    gridData: '=',
+                    sort: '=',
+                    sortBy: '=',
+                    onDeleteItem: '&',
+                    onEditItem: '&'
+                },
+                controller: function ($scope) {
+                    $scope.deleteAction = function (item, action) {
+                        $scope.onDeleteItem({
+                            item: item,
+                            action: action
+                        });
+                    };
+
+                    $scope.editAction = function (item, action) {
+                        $scope.onEditItem({
+                            item: item,
+                            action: action
+                        });
+                    };
+
+                    // use double-bind
+                    $scope.sortObj = {
+                        sort: $scope.sort,
+                        sortBy: $scope.sortBy
+                    };
+
+                    $scope.$watch('sortObj', function () {
+                        $scope.sort   = $scope.sortObj.sort;
+                        $scope.sortBy = $scope.sortObj.sortBy;
+                    }, true)
+
                 },
                 templateUrl: '/admin/ui_components/co-grid/co-grid.html',
                 link: function ($scope, element, attrs, ctrls) {
@@ -28,15 +59,6 @@ define([], function (tpl) {
 
                     $scope.actions =
                         angular.isDefined(attrs.actions) ? $scope.$parent.$eval(attrs.actions) : coGridConfig.actions;
-
-
-                    $scope.deleteAction = function (action) {
-                        console.log('delete:', action);
-                    };
-
-                    $scope.editAction = function (action) {
-                        console.log('edit:', action);
-                    };
                 }
             };
         }])

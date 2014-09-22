@@ -9,13 +9,20 @@ define([], function (tpl) {
         .directive('coSearch', function () {
             return {
                 restrict: 'E',
-                replace: {
+                scope: {
                     keyword: '='
                 },
                 templateUrl: '/admin/ui_components/co-search/co-search.html',
                 link: function ($scope, element, attrs) {
                     $scope.search = function () {
                         $scope.keyword = $scope.key;
+                        console.log($scope.keyword);
+                    };
+
+                    $scope.reset = function () {
+                        console.log('wori');
+                        $scope.keyword = '';
+                        $scope.key = '';
                     };
                 }
             };

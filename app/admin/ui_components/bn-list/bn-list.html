@@ -10,14 +10,14 @@
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
         </ul>
-        <co-search keyword="keyword" ng-if="search"></co-search>
+        <co-search keyword="paramObj.keyword" ng-if="search"></co-search>
         <div class="navbar-btn navbar-right hide-xs" ng-if="addBtnText">
-          <a href="/host/host/add/" class="btn btn-primary">
+          <a ng-click="addData()" class="btn btn-primary">
             <i class="fa fa-plus"></i>
             {{addBtnText}}
           </a>
         </div>
     </div>
 </div>
-<co-grid fields="grid.gridFields" grid-data="gridData" actions="grid.actions"></co-grid>
-<pagination items-per-page="itemsPerPage" rotate="false" total-items="totalItems" max-size="maxSize" page="page" class="dataTables_paginate"></pagination>
+<co-grid fields="grid.gridFields" grid-data="gridData" actions="grid.actions" sort="paramObj.sort" sort-by="paramObj.sortBy" on-delete-item="deleteData(item, action)" on-edit-item="editData(item, action)"></co-grid>
+<pagination items-per-page="itemsPerPage" rotate="false" total-items="totalItems" max-size="maxSize" page="paramObj.page" class="dataTables_paginate"></pagination>

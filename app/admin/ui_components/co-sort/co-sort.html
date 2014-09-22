@@ -1,0 +1,12 @@
+<div class="pull-right" ng-if="sort && sortMatch">
+    <a class="toggle" ng-click="toggleAction()" class="active"><i class="fa fa-sort-{{sort==='asc' ? 'up' : 'down'}}"></i></a>
+</div>
+<div class="dropdown pull-left">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" ng-transclude>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+        <li ng-class="{'active': sort=='asc' && sortMatch}"><a class="active" ng-click="toggleAction('asc')"><i class="fa fa-caret-up"></i> 正序</a></li>
+        <li ng-class="{'active': sort=='desc' && sortMatch}"><a class="active" ng-click="toggleAction('desc')"><i class="fa fa-caret-down"></i> 倒序</a></li>
+        <li><a class="active" ng-click="removeSort()"><i class="fa fa-remove"></i> 取消排序</a></li>
+    </ul>
+</div>
