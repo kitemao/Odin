@@ -5,6 +5,7 @@
  */
 
 define([
+    'ui_components/co-validator/co-validator',
     'ui_components/co-sort/co-sort',
     'ui_components/co-search/co-search',
     'ui_components/co-grid/co-grid',
@@ -18,6 +19,7 @@ define([
         'bn.form',
         'co.search',
         'co.sort',
-        'co.grid'
+        'co.grid',
+        'co.validator'
     ]);
 });

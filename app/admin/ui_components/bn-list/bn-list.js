@@ -48,15 +48,21 @@ define([], function (tpl) {
                         $modal.open({
                             templateUrl: '/admin/ui_components/bn-list/dialog.html',
                             size: 'lg',
-                            controller: function ($scope, $modalInstance, fields) {
+                            controller: function ($scope, $modalInstance, fields, resourceDao) {
                                 $scope.fields = fields;
-                                console.log('$scope.fields:', $scope.fields);
                                 $scope.formData = {};
                                 $scope.title = 'Add item';
 
-                                $scope.ok = function () {
+                                $scope.ok = function (data) {
 
-                                    $modalInstance.close($scope.formData);
+                                    $scope.errorInfo = {
+                                        name: 'hahahah',
+                                        gender: 'hehehe',
+                                        description: 'mememem'
+                                    }
+                                    // resourceDao.save($scope.formData, function () {
+                                    //     $modalInstance.close($scope.formData);
+                                    // });
                                 };
                                 $scope.cancel = function () {
                                     $modalInstance.dismiss('cancel');
@@ -65,14 +71,14 @@ define([], function (tpl) {
                             resolve: {
                                 fields: function () {
                                     return $scope.grid.gridFields;
+                                },
+                                resourceDao: function () {
+                                    return $scope.resourceDao;
                                 }
                             }
                         }).result.then(function (data) {
-                            console.log('data:', data);
-                            return false;
-                            $scope.resourceDao.post(data, function (obj) {
-                                getData($scope.paramObj);
-                            });
+                            // reget the listdata
+                            getData($scope.paramObj);
                         });
                     };
 

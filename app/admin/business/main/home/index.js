@@ -29,11 +29,13 @@ require([
                             field: 'name',
                             editable: true,
                             editType: 'text',
-                            hint: '请输入名字',
+                            placeholder: '请输入名字',
                             dataType: 'string',
-                            valid: {
-                                required: { errorMsg: '请输入名字' }
-                            }
+                            validate: {
+                                required : { errorMsg: '请输入名字', value: true },
+                                maxlength: { errorMsg: '最多不能超过6个字符', value: 6 }
+                            },
+                            help: 'test'
                         },
                         {
                             title: '性别',
@@ -50,10 +52,10 @@ require([
                                     value: 1, text: '女'
                                 }
                             ],
-                            hint: '请输入性别',
+                            help: '性别',
                             dataType: 'number',
-                            valid: {
-                                required: { errorMsg: '请输入性别' }
+                            validate: {
+                                required: { errorMsg: '请输入性别', value: true}
                             },
                             content: function (item) {
                                 return item.gender === 0 ? '男' : '女';
@@ -66,8 +68,11 @@ require([
                             field: 'description',
                             editable: true,
                             editType: 'textarea',
-                            hint: '自我简介',
-                            dataType: 'string'
+                            placeholder: '自我简介',
+                            dataType: 'string',
+                            validate: {
+                                required: { errorMsg: '请输入内容', value: true}
+                            }
                         }
                     ],
                     actions: [

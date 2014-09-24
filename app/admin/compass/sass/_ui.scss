@@ -13,3 +13,7 @@ co-grid {
         list-style: none;
     }
 }
+
+.ng-invalid.ng-dirty .error {
+    color: red;
+}
