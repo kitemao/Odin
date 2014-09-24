@@ -4,7 +4,6 @@
 *.sublime-workspace
 
 /node_modules/
-/app/components
 /dist/
 /test/output/
 /.sass-cache/
