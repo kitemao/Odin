@@ -4,23 +4,16 @@
     <meta charset="utf-8">
     <title>Odin</title>
 
-    <link href="/components/bootstrap/css/bootstrap.css" type="text/css" media="screen" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" id="site-theme" href="http://bootswatch.com/cerulean/bootstrap.min.css" />
-
+    <link rel="stylesheet" type="text/css" href="/admin/vendor/bootswatch/cerulean/bootstrap.min.css" />
     <link href="/components/font-awesome/css/font-awesome.css" type="text/css" media="screen" rel="stylesheet" />
-<!--     <link href="/vendor/xadmin/css/xadmin.main.css" type="text/css" media="screen" rel="stylesheet" />
-    <link href="/vendor/xadmin/css/xadmin.plugins.css" type="text/css" media="screen" rel="stylesheet" />
-    <link href="/vendor/xadmin/css/xadmin.responsive.css" type="text/css" media="screen" rel="stylesheet" />
-    <link href="/vendor/xadmin/css/xadmin.page.dashboard.css" type="text/css" media="screen" rel="stylesheet" /> -->
-    <!-- <link href="/vendor/xadmin/css/xadmin.form.css" type="text/css" media="screen" rel="stylesheet" /> -->
 
     <link rel="stylesheet" href="/stylesheets/common.css">
     <link rel="stylesheet" href="/admin/business/main/home/home.css">
   </head>
   <body ng-controller="home">
     <bn-crumb title="配置" sub-title="首页"></bn-crumb>
-    <bn-list title="首页" add-btn-text="增加后台" search="true" resource-url="/api/miao/:field" resource-index="id" grid="grid" items-per-page="10" max-size="5"></bn-list>
+    <bn-list title="首页" add-btn-text="增加后台" search="true" resource-url="/api/miao/:field" resource-index="id" grid-options="gridOptions" pagination-options="paginationOptions"></bn-list>
+    <co-loading></co-loading>
 
     <!-- build:js /scripts/base.js -->
     <script src="/components/underscore/underscore.js"></script>

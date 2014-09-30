@@ -41,6 +41,9 @@
                             <a ng-href="{{action.url}}" title="link" target="_blank" ng-if="action.type === 'link'">
                                 <i class="fa fa-external-link"></i> {{action.title}}
                             </a>
+                            <a ng-click="customAction(item, action)" title="link" target="_blank" ng-if="action.type === 'custom'">
+                                <i class="fa fa-external-link"></i> {{action.title}}
+                            </a>
                         </li>
                     </ul>
                 </div>

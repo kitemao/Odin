@@ -2,7 +2,7 @@
     <div class="col-sm-12 form-group" ng-repeat="field in fields">
         <div ng-if="field.editable">
             <label for="id_name" class="col-sm-2 control-label">
-                {{field.title}}<span class="red" ng-if="field.validate.required">*</span>
+                {{field.title}}<span class="text-danger" ng-if="field.validate.required">*</span>
             </label>
             <div class="col-sm-10"
                 ng-if="field.editType=='text' || field.editType=='password'
@@ -17,10 +17,8 @@
                     ng-minlength="{{field.validate.minlength.value}}"
                     ng-maxlength="{{field.validate.maxlength.value}}"
                     ng-pattern="{{field.validate.pattern.value}}"
-                    help="field.help"
-                    customMsg="{{customMsg[field.field]}}"
-                    co-validator="field.validate"
                     >
+                <co-input-tip help="field.help" custom-msg="customMsg[field.field]" validator="field.validate" for="field.field"></co-input-tip>
             </div>
             <div class="col-sm-10" ng-if="field.editType=='textarea'">
                 <textarea
@@ -33,14 +31,12 @@
                     ng-minlength="{{field.validate.minlength.value}}"
                     ng-maxlength="{{field.validate.maxlength.value}}"
                     ng-pattern="{{field.validate.pattern.value}}"
-                    help="field.help"
-                    customMsg="{{customMsg[field.field]}}"
-                    co-validator="field.validate"></textarea>
+                    ></textarea>
+                <co-input-tip help="field.help" custom-msg="customMsg[field.field]" validator="field.validate" for="field.field"></co-input-tip>
             </div>
             <div class="col-sm-10" ng-if="field.editType=='select'">
                 <select
                     class="form-control"
-                    selected='0'
                     dynamic-name="field.field"
                     ng-model="formData[field.field]"
                     ng-options="options.value as options.text for options in field.selectOptions"
@@ -49,10 +45,42 @@
                     ng-maxlength="{{field.validate.maxlength.value}}"
                     ng-pattern="{{field.validate.pattern.value}}"
                     help="field.help"
-                    customMsg="{{customMsg[field.field]}}"
-                    co-validator="field.validate">
+                    custom-msg="customMsg[field.field]"
+                    >
                     <option value="">--请选择--</option>
                 </select>
+                <co-input-tip help="field.help" custom-msg="customMsg[field.field]" validator="field.validate" for="field.field"></co-input-tip>
+            </div>
+            <div class="col-sm-10" ng-if="field.editType=='radio'">
+                <div class="radio" ng-repeat="options in field.radioOptions">
+                    <label>
+                        <input
+                            type="radio"
+                            dynamic-name="field.field"
+                            ng-model="formData[field.field]"
+                            ng-value="options.value"
+                            ng-required="{{field.validate.required.value}}"
+                            custom-msg="customMsg[field.field]"
+                            >
+                        {{options.text || options.value}}
+                    </label>
+                </div>
+                <co-input-tip help="field.help" custom-msg="customMsg[field.field]" validator="field.validate" for="field.field"></co-input-tip>
+            </div>
+            <div class="col-sm-10" ng-if="field.editType=='checkbox'">
+                <div class="checkbox" ng-repeat="options in field.checkboxOptions">
+                    <label>
+                        <input
+                            type="checkbox"
+                            dynamic-name="field.field"
+                            checklist-model="formData[field.field]"
+                            checklist-value="options.value"
+                            custom-msg="customMsg[field.field]"
+                            >
+                        {{options.text || options.value}}
+                    </label>
+                </div>
+                <co-input-tip help="field.help" custom-msg="customMsg[field.field]" validator="field.validate" for="field.field"></co-input-tip>
             </div>
         </div>
     </div>

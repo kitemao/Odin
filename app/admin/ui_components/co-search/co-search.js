@@ -16,11 +16,9 @@ define([], function (tpl) {
                 link: function ($scope, element, attrs) {
                     $scope.search = function () {
                         $scope.keyword = $scope.key;
-                        console.log($scope.keyword);
                     };
 
                     $scope.reset = function () {
-                        console.log('wori');
                         $scope.keyword = '';
                         $scope.key = '';
                     };

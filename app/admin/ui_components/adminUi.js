@@ -5,7 +5,8 @@
  */
 
 define([
-    'ui_components/co-validator/co-validator',
+    'ui_components/co-loading/co-loading',
+    'ui_components/co-input-tip/co-input-tip',
     'ui_components/co-sort/co-sort',
     'ui_components/co-search/co-search',
     'ui_components/co-grid/co-grid',
@@ -20,6 +21,7 @@ define([
         'co.search',
         'co.sort',
         'co.grid',
-        'co.validator'
+        'co.inputTip',
+        'co.loading'
     ]);
 });

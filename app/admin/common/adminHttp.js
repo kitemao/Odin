@@ -16,16 +16,22 @@ define([], function () {
                     if (PROTOCOL_PREFIX.test(path)) {
                         return path;
                     }
-
                     if (!API_PREFIX.test(path)) {
                         return path;
                     }
-
                     if ($rootScope.URL_PROFIX) {
                         return $rootScope.URL_PROFIX + path;
                     }
 
                     return path;
+                },
+                isApi: function (path) {
+                    if (API_PREFIX.test(path)) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                 }
             };
         })
@@ -47,13 +53,20 @@ define([], function () {
 
                 return {
                     request: function (config) {
-                        console.log(config.url);
                         normalizeUrl(config);
+
+                        if (adminUrl.isApi(config.url)) {
+                            $rootScope.isLoading = true;
+                        }
 
                         return config;
                     },
                     response: function (response) {
                         restoreUrl(response.config);
+
+                        if (adminUrl.isApi(response.config.url)) {
+                           $rootScope.isLoading = false;
+                        }
 
                         return response;
                     },
@@ -61,6 +74,10 @@ define([], function () {
                     responseError: function (response) {
                         var status = response.status;
                         var data   = response.data;
+
+                        if (adminUrl.isApi(response.config.url)) {
+                            $rootScope.isLoading = false;
+                        }
 
                         // no auth
                         if (status === 403) {

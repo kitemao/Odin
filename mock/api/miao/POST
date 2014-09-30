@@ -1,0 +1,14 @@
+module.exports = {
+    data: {},
+    statusInfo: {
+        text: "参数错误",
+        parameters: {
+            name: "名称已经重复",
+            gender: "据我所知你不是这个性别吧？",
+            description: "能好好写么",
+            marital: "你这么选，你小老婆知道么",
+            hobby: "国庆快乐"
+       }
+    },
+    status: 514
+}

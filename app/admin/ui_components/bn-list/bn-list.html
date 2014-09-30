@@ -19,5 +19,5 @@
         </div>
     </div>
 </div>
-<co-grid fields="grid.gridFields" grid-data="gridData" actions="grid.actions" sort="paramObj.sort" sort-by="paramObj.sortBy" on-delete-item="deleteData(item, action)" on-edit-item="editData(item, action)"></co-grid>
-<pagination items-per-page="itemsPerPage" rotate="false" total-items="totalItems" max-size="maxSize" page="paramObj.page" class="dataTables_paginate"></pagination>
+<co-grid fields="gridOptions.fields" grid-data="gridData" actions="gridOptions.actions" sort="paramObj.sort" sort-by="paramObj.sortBy" on-delete-item="deleteData(item, action)" on-edit-item="editData(item, action)"></co-grid>
+<pagination items-per-page="paginationOptions.itemsPerPage" rotate="false" total-items="totalItems" max-size="paginationOptions.maxSize" page="paramObj.page" class="dataTables_paginate"></pagination>

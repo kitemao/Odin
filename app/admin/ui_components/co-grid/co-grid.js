@@ -36,6 +36,13 @@ define([], function (tpl) {
                         });
                     };
 
+                    $scope.customAction = function (item, action) {
+                        if (typeof action.action === 'function') {
+
+                            action.action(item, action, $scope);
+                        }
+                    }
+
                     // use double-bind
                     $scope.sortObj = {
                         sort: $scope.sort,

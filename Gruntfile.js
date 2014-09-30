@@ -43,10 +43,10 @@ module.exports = function (grunt) {
             //grunt.log.writeln(req.method);
 
             grunt.log.writeln(req.url);
-            if (req.url === '/project') {
 
-                res.statusCode = '403';
-            }
+            grunt.log.writeln(req.url + ':  ' + fileJson.status);
+
+            res.statusCode = fileJson.status || 200;
             //grunt.log.writeln(fileStr);
             res.end(fileStr);
         }
