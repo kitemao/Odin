@@ -52,6 +52,8 @@ define([], function () {
                     });
 
                     function validateFn(value) {
+                        fieldCtrl.$setValidity('custom', true);
+
                         $timeout(function () {
                             validate();
                         });
@@ -89,6 +91,7 @@ define([], function () {
                     }
 
                     function showCustomError() {
+                        fieldCtrl.$setValidity('custom', false);
                         $scope.showHelp = false;
                         $scope.errorMsgs = [];
                     }
