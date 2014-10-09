@@ -10,7 +10,7 @@
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
         </ul>
-        <co-search keyword="paramObj.keyword" ng-if="search"></co-search>
+        <co-search ng-model="paramObj.keyword" ng-if="search"></co-search>
         <div class="navbar-btn navbar-right hide-xs" ng-if="addBtnText">
           <a ng-click="addData()" class="btn btn-primary">
             <i class="fa fa-plus"></i>

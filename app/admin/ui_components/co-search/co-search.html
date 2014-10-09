@@ -1,7 +1,7 @@
 <form class="navbar-form navbar-left">
     <div class="input-group search-group">
-      <span class="input-group-btn" ng-if="keyword"><a class="btn btn-default" ng-click="reset();">x</a></span>
-      <input id="searchbar" class="form-control" type="text" placeholder="Search" ng-model="key">
-      <span class="input-group-btn"><button class="btn btn-primary" type="submit" ng-click="search(key);"><i class="fa fa-search fa-white"></i></button></span>
+      <span class="input-group-btn" ng-if="actualKey"><a class="btn btn-default" ng-click="reset();">x</a></span>
+      <input id="searchbar" class="form-control" type="text" placeholder="Search" ng-model="keyword">
+      <span class="input-group-btn"><button class="btn btn-primary" type="submit" ng-click="search();"><i class="fa fa-search fa-white"></i></button></span>
     </div>
 </form>
