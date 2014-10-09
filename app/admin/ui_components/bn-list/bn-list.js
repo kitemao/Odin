@@ -25,7 +25,9 @@ define([], function (tpl) {
                     paginationOptions   : '=',
                     gridOptions         : '='
                 },
-                templateUrl: '/admin/ui_components/bn-list/bn-list.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/bn-list/bn-list.html';
+                },
                 controller: function ($scope, $rootScope, $resource) {
                     // initialize
                     $scope.page          = $scope.page || bnListConfig.page;

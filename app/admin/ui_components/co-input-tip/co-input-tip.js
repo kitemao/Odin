@@ -14,7 +14,9 @@ define([], function () {
             return {
                 restrict: 'E',
                 require: ['^form'],
-                templateUrl: '/admin/ui_components/co-input-tip/co-input-tip.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/co-input-tip/co-input-tip.html';
+                },
                 scope: {
                     customMsg: '='
                 },

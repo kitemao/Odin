@@ -126,7 +126,9 @@ define([], function (tpl) {
         .directive('bnForm', function ($compile) {
             return {
                 restrict: 'E',
-                templateUrl: '/admin/ui_components/bn-form/bn-form.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/bn-form/bn-form.html';
+                },
                 scope: {
                     fields     : '=',
                     datasource : '=',

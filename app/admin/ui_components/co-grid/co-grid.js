@@ -55,7 +55,9 @@ define([], function (tpl) {
                     }, true)
 
                 },
-                templateUrl: '/admin/ui_components/co-grid/co-grid.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/co-grid/co-grid.html';
+                },
                 link: function ($scope, element, attrs, ctrls) {
 
                     $scope.itemTemplateUrl =
