@@ -7,9 +7,10 @@ define([], function (tpl) {
 
     angular.module('co.grid', [])
         .constant('coGridConfig', {
-            itemTemplateUrl: '/admin/ui_components/co-grid/table.html',
             fields: [],
-            actions: null
+            actions: null,
+            multiChoose: false,
+            checkedData: []
         })
         .directive('coGrid', ['coGridConfig', function (coGridConfig) {
             return {
@@ -42,7 +43,6 @@ define([], function (tpl) {
                             action.action(item, action, $scope);
                         }
                     }
-
                     // use double-bind
                     $scope.sortObj = {
                         sort: $scope.sort,
@@ -56,18 +56,49 @@ define([], function (tpl) {
 
                 },
                 templateUrl: function (tElement, tAttrs) {
-                    return tAttrs.templateUrl || '/admin/ui_components/co-grid/co-grid.html';
+                    return tAttrs.templateUrl || '/admin/ui_components/co-grid/table.html';
                 },
                 link: function ($scope, element, attrs, ctrls) {
-
-                    $scope.itemTemplateUrl =
-                        angular.isDefined(attrs.itemTemplateUrl) ? $scope.$parent.$eval(attrs.itemTemplateUrl) : coGridConfig.itemTemplateUrl;
+                    $scope.multiChoose =
+                        angular.isDefined(attrs.multiChoose) ? $scope.$parent.$eval(attrs.multiChoose) : coGridConfig.multiChoose;
 
                     $scope.fields =
                         angular.isDefined(attrs.fields) ? $scope.$parent.$eval(attrs.fields) : coGridConfig.fields;
 
                     $scope.actions =
                         angular.isDefined(attrs.actions) ? $scope.$parent.$eval(attrs.actions) : coGridConfig.actions;
+
+                    // multiChoose logic
+                    $scope.checkedSource = {
+                        isAllChecked: false
+                    };
+
+                    // ng-if has new scope, so checkedData put the checkedSource
+                    // no use scope =checkedData, not need initialized checkedData
+                    $scope.checkedSource.checkedData =
+                        angular.isDefined(attrs.checkedData)
+                            ? ($scope.$parent.$eval(attrs.checkedData) ? $scope.$parent.$eval(attrs.checkedData) : coGridConfig.checkedData)
+                            : coGridConfig.checkedData;
+
+                    $scope.$watch('checkedSource.checkedData', function (checkedData) {
+                        $scope.$parent[attrs.checkedData] = checkedData;
+                    });
+
+                    if ($scope.multiChoose) {
+                        $scope.$watch(function () {
+                            return $scope.gridData && ($scope.gridData.length === $scope.checkedSource.checkedData.length);
+                        }, function (isAll) {
+                            $scope.checkedSource.isAllChecked = isAll ? true : false;
+                        });
+                    }
+                    $scope.multiCheckboxChange = function () {
+                        if ($scope.checkedSource.isAllChecked) {
+                            $scope.checkedSource.checkedData = angular.copy($scope.gridData);
+                        }
+                        else {
+                            $scope.checkedSource.checkedData = [];
+                        }
+                    }
                 }
             };
         }])

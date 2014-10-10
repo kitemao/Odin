@@ -23,7 +23,8 @@ define([], function (tpl) {
 
                     filterOptions       : '=',
                     paginationOptions   : '=',
-                    gridOptions         : '='
+                    gridOptions         : '=',
+                    batchOptions        : '='
                 },
                 templateUrl: function (tElement, tAttrs) {
                     return tAttrs.templateUrl || '/admin/ui_components/bn-list/bn-list.html';
@@ -120,6 +121,16 @@ define([], function (tpl) {
 
                     $scope.deleteData = function(item) {
                         $scope.resourceDao.delete({field: item[$scope.resourceIndex]}, function (obj) {
+                            getData($scope.paramObj);
+                        });
+                    };
+
+                    $scope.batchDeleteData = function() {
+                        if (!$scope.checkedData || !$scope.checkedData.length) {
+                            return;
+                        }
+                        // i am so sad, angular not support delete request body, only parameter
+                        $scope.resourceDao.delete({data: $scope.checkedData.map(function(item){return item[$scope.resourceIndex]})}, function (obj) {
                             getData($scope.paramObj);
                         });
                     };

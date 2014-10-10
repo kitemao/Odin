@@ -12,12 +12,25 @@
         </ul>
         <co-search ng-model="paramObj.keyword" ng-if="search"></co-search>
         <div class="navbar-btn navbar-right hide-xs" ng-if="addBtnText">
-          <a ng-click="addData()" class="btn btn-primary">
+          <a ng-click="addData()" class="btn btn-primary" ng-if="addBtnText">
             <i class="fa fa-plus"></i>
             {{addBtnText}}
           </a>
         </div>
     </div>
 </div>
-<co-grid fields="gridOptions.fields" grid-data="gridData" actions="gridOptions.actions" sort="paramObj.sort" sort-by="paramObj.sortBy" on-delete-item="deleteData(item, action)" on-edit-item="editData(item, action)"></co-grid>
-<pagination items-per-page="paginationOptions.itemsPerPage" rotate="false" total-items="totalItems" max-size="paginationOptions.maxSize" page="paramObj.page" class="dataTables_paginate"></pagination>
+<co-grid multi-choose="gridOptions.multiChoose" fields="gridOptions.fields" grid-data="gridData" actions="gridOptions.actions" sort="paramObj.sort" sort-by="paramObj.sortBy" on-delete-item="deleteData(item, action)" on-edit-item="editData(item, action)" checked-data="checkedData"></co-grid>
+<pagination items-per-page="paginationOptions.itemsPerPage" rotate="false" total-items="totalItems" max-size="paginationOptions.maxSize" page="paramObj.page" class="dataTables_paginate pull-right"></pagination>
+<div class="btn-group clearfix dropup">
+    <a class="dropdown-toggle btn btn-success" data-toggle="dropdown" href="#">
+    <i class="icon-wrench icon-white"></i>
+    <span class="action-counter">选中了 {{gridData.length}} 个中的 {{checkedData.length}} 个</span>
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li ng-repeat="action in batchOptions">
+            <a ng-click="batchDeleteData()" title="删除" ng-if="action.type === 'delete'">
+                <i class="fa fa-remove"></i> {{action.title}}
+            </a>
+        </li>
+    </ul>
+</div>
