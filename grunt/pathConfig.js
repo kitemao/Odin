@@ -1,7 +1,6 @@
 // configurable paths
 module.exports = {
-    app: 'app',
-    admin: 'admin',
+    app: 'admin',
     dist: 'dist',
     tmp: '.tmp',
     test: 'test',

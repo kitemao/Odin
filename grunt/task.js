@@ -6,16 +6,6 @@ module.exports = function (grunt) {
         'watch'
     ]);
 
-    grunt.registerTask('test', [
-        'jshint:test',
-        'karma:test'
-    ]);
-
-    grunt.registerTask('test:travis', [
-        'jshint:test',
-        'karma:travis'
-    ]);
-
     grunt.registerTask('build:staging', [
         'clean:dist',
         'concurrent:dist',

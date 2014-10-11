@@ -9,31 +9,21 @@ module.exports = function (grunt) {
     var mockConnect = function (req, res, next) {
         // 测试数据，没有ext的暂定为服务器请求
         if (require('path').extname(req.url) === '') {
-
             var filePath = '../' + pathConfig.mock + req.url.split('?')[0] + '/' + req.method;
             //var fileStr = require('fs').readFileSync( filePath , 'utf-8');
 
             // 删除数据缓存,以免修改后不更新
             delete require.cache[filePath];
 
-            grunt.log.writeln(filePath);
-            // 请求数据文件ç
+            // 请求数据文件
             var fileJson = require(filePath);
-
             var fileStr  = JSON.stringify(fileJson);
-            //grunt.log.writeln(fileStr);
-            //grunt.log.writeln(res.statusCode);
-            //grunt.log.writeln(req.method);
-
-            //grunt.log.writeln(req.url);
-            //grunt.log.writeln(req.url + ':  ' + fileJson.status);
 
             res.statusCode = fileJson.status || 200;
             //grunt.log.writeln(fileStr);
             res.end(fileStr);
         }
         else {
-
             next();
         }
     };
