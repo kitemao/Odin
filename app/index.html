@@ -6,6 +6,40 @@
         <script src="components/platform/platform.js"></script>
         <link rel="import" href="polymer_components/ly-main/ly-main.html">
         <link rel="import" href="config_components/cf-admin.html">
+
+        <style>
+
+        html /deep/ core-scaffold {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        html /deep/ [drawer] {
+            box-shadow: none;
+        }
+
+
+        html /deep/ #navheader img {
+            margin: 0;
+        }
+
+        html /deep/ #navheader span {
+            font-size: 17px;
+            color: rgb(188, 188, 188);
+            vertical-align: baseline;
+            font-weight: 400;
+            margin: 0;
+            margin-left: 6px;
+        }
+
+        html /deep/ #dropShadow {
+            display: none;
+        }
+
+        </style>
     </head>
     <body unresolved fullbleed>
         <cf-admin id="adminCfg"></cf-admin>

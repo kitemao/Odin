@@ -16,16 +16,25 @@
 <link rel="import" href="../../components/core-menu/core-submenu.html">
 <link rel="import" href="../../components/flatiron-director/flatiron-director.html">
 
+
+
+
+
 <polymer-element name="ly-main" attributes="adminCfgId">
 <template>
     <link rel="stylesheet" href="ly-main.css">
 
     <flatiron-director route="{{route}}" on-director-route="{{routeChangeAction}}" autoHash="true"></flatiron-director>
-    <core-scaffold fullbleed>
-      <core-header-panel navigation flex>
+    
+    <core-scaffold id="odin-page">
+
+      <core-header-panel navigation flex class="odin-header">
+
         <core-toolbar id="navheader">
-          <span>Odin</span>
+          <img src="/images/logo.png" alt="豌豆荚"/>
+          <span>统一运营后台</span>
         </core-toolbar>
+
         <core-menu selected="{{selected}}" on-core-select="{{selectAdmin}}">
             <template repeat="{{nav}}">
                 <core-submenu icon="{{icon}}" label="{{title}}">
@@ -35,13 +44,16 @@
                 </core-submenu>
             </template>
         </core-menu>
+
       </core-header-panel>
 
       <ly-super-area tool adminCfgId="{{adminCfgId}}" on-change-admin="{{changeAdmin}}" ></ly-super-area>
 
       <ly-iframe class="content" route="{{route}}"></ly-iframe>
+
     </core-scaffold>
 </template>
+
 <script>
 
   /*
