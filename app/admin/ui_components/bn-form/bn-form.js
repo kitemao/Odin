@@ -126,7 +126,9 @@ define([], function (tpl) {
         .directive('bnForm', function ($compile) {
             return {
                 restrict: 'E',
-                templateUrl: '/admin/ui_components/bn-form/bn-form.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/bn-form/bn-form.html';
+                },
                 scope: {
                     fields     : '=',
                     datasource : '=',
@@ -138,22 +140,22 @@ define([], function (tpl) {
                     $scope.formData = angular.copy($scope.datasource);
 
                     $scope.ok = function (formData) {
+                        var form = $scope.v_form;
+
+                        angular.forEach(form, function (input, key) {
+                            if (input.hasOwnProperty('$dirty')) {
+                                if (input.$pristine && (input.$viewValue === null || input.$viewValue === undefined)) {
+                                    input.$setViewValue('');
+                                }
+                                else {
+                                    input.$setViewValue(input.$viewValue);
+                                }
+                            }
+                        });
+
                         if ($scope.v_form.$valid) {
                             $scope.onSuccess({
                                 data: formData
-                            });
-                        }
-                        else {
-                            var form = $scope.v_form;
-                            angular.forEach(form, function (input, key) {
-                                if (input.hasOwnProperty('$dirty')) {
-                                    if (input.$pristine && (input.$viewValue === null || input.$viewValue === undefined)) {
-                                        input.$setViewValue('');
-                                    }
-                                    else {
-                                        input.$setViewValue(input.$viewValue);
-                                    }
-                                }
                             });
                         }
                     };

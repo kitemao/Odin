@@ -2,7 +2,8 @@
     <thead>
         <tr>
             <th class="action-checkbox-column" ng-if="multiChoose">
-                <input type="checkbox" id="action-toggle">
+                <input type="checkbox" ng-change="multiCheckboxChange();" ng-model="checkedSource.isAllChecked">
+                {{isAllChecked}}
             </th>
             <th ng-repeat="item in fields" class="sortable sorted descending">
                 <co-sort ng-if="item.sortable" sort="sortObj.sort" sort-by="sortObj.sortBy" sort-by-field="item.field">
@@ -20,7 +21,7 @@
     <tbody>
         <tr class="grid-item" ng-repeat="item in gridData">
             <td class="action-checkbox" ng-if="multiChoose">
-                <input class="action-select" name="_selected_action" type="checkbox" value="57">
+                <input class="action-select" name="_selected_action" type="checkbox" checklist-model="checkedSource.checkedData" checklist-value="item">
             </td>
             <td class="action-checkbox" ng-repeat="cell in fields">
                 {{ cell.content ? cell.content(item, cell) : item[cell.field]}}

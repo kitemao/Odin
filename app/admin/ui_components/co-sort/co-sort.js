@@ -35,7 +35,9 @@ define([], function (tpl) {
                         }
                     });
                 },
-                templateUrl: '/admin/ui_components/co-sort/co-sort.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/co-sort/co-sort.html';
+                },
                 link: function ($scope, element, attrs) {
 
                     if (angular.isDefined(attrs.sortByField)) {

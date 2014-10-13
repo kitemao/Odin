@@ -1,6 +1,7 @@
 :host {
     height: 50px;
     width: 100%;
+    margin-top: 4px;
     line-height: 50px;
 }
 
@@ -15,14 +16,16 @@
 }
 
 paper-dropdown {
-    color: #fff;
+    color: #333;
     background: transparent;
     padding: 0;
 }
 
 paper-dropdown::shadow #control {
-    color: #fff;
-    border-bottom: 1px solid #fff;
+    font-size: 14px;
+    max-height: 40px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
 }
 
 paper-dropdown::shadow #control > div {
@@ -38,5 +41,10 @@ paper-menu-button {
 }
 
 paper-menu-button::shadow #menu {
-    background-color: #fff;
+    background-color: #666;
+}
+
+.username {
+    font-size: 14px;
+    color: #666;
 }

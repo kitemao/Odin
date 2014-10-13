@@ -10,7 +10,9 @@ define([], function (tpl) {
             return {
                 restrict: 'E',
                 scope: true,
-                templateUrl: '/admin/ui_components/co-loading/co-loading.html',
+                templateUrl: function (tElement, tAttrs) {
+                    return tAttrs.templateUrl || '/admin/ui_components/co-loading/co-loading.html';
+                },
                 link: function ($scope, element, attrs) {
                     $scope.isLoading = false;
 

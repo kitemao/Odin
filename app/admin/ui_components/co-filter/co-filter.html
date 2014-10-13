@@ -1,0 +1,56 @@
+<div>
+    <!-- template -->
+    <table class="group ui-widget ui-widget-content">
+        <tbody>
+            <!-- Tip feedback -->
+            <tr class="error" style="display:none;">
+                <th colspan="5" class="ui-state-error" align="left"></th>
+            </tr>
+            <!-- top op bar -->
+            <tr>
+                <th colspan="5" align="left">
+                    <select class="opsel" ng-model="candidatesRel"
+                        ng-repeat="i.op as i.text for i in candidatesRelOpts">
+                    </select>
+                    <span></span>
+                    <input ng-click="addCandidate()" type="button" value="+"
+                        title="Add rule" class="add-rule ui-add btn btn-small btn-primary">
+                </th>
+            </tr>
+            <!-- filter rows -->
+            <tr ng-repeat="state.candidates track by $index">
+                <td class="columns">
+                    <select ng-option="i as i.name for i in fieldList" ng-model="state.candidates[$index].field">
+                    </select>
+                </td>
+                <td class="operators">
+                    <select class="selectopts" ng-model="state.candidates[$index].oper"
+                        ng-option="i.name as i.alias for i in getOperators($index)">
+                    </select>
+                </td>
+                <td class="data">
+                    <input type="text" class="input-elm" style="width: 98%;" ng-model="state.candidates[$index].data">
+                </td>
+                <td>
+                    <input ng-click="delCandidate($index)" type="button" value="X"
+                        title="Delete rule" class="delete-rule ui-del">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="EditTable" style="border:0px none;margin-top:5px">
+        <tbody><tr>
+            <td class="EditButton" style="text-align:left">
+                <a ng-click="resetCandidates()" class="ui-reset btn btn-small btn-info">
+                    <span class="icon-retweet"></span>Reset
+                </a>
+            </td>
+            <td class="EditButton">
+                <a ng-click="submitCandidates()" class="ui-submit btn btn-small btn-purple">
+                    <span class="icon-search"></span>Submit
+                </a>
+            </td>
+        </tr></tbody>
+    </table>
+</div>

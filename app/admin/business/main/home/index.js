@@ -17,7 +17,14 @@ require([
                 itemsPerPage: '10',
                 maxSize: 5
             },
+            batchOptions: [
+                {
+                    title: '删除选中的',
+                    type: 'delete'
+                }
+            ],
             gridOptions: {
+                multiChoose: true,
                 fields: [
                     {
                         title: 'ID',

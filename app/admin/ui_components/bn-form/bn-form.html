@@ -44,8 +44,6 @@
                     ng-minlength="{{field.validate.minlength.value}}"
                     ng-maxlength="{{field.validate.maxlength.value}}"
                     ng-pattern="{{field.validate.pattern.value}}"
-                    help="field.help"
-                    custom-msg="customMsg[field.field]"
                     >
                     <option value="">--请选择--</option>
                 </select>
@@ -60,7 +58,6 @@
                             ng-model="formData[field.field]"
                             ng-value="options.value"
                             ng-required="{{field.validate.required.value}}"
-                            custom-msg="customMsg[field.field]"
                             >
                         {{options.text || options.value}}
                     </label>
@@ -75,7 +72,6 @@
                             dynamic-name="field.field"
                             checklist-model="formData[field.field]"
                             checklist-value="options.value"
-                            custom-msg="customMsg[field.field]"
                             >
                         {{options.text || options.value}}
                     </label>
